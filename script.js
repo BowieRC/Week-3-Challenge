@@ -235,7 +235,7 @@ function threeCriteria(){
       }
   if(!needsLowercase){
     if(chance <3){
-      characterString = UppercaseString;
+      characterString = uppercaseString;
       }
     else if(chance >=3 && chance <6){
       characterString = numberString;
@@ -290,21 +290,24 @@ function setCharacter(){
 //checks if all criteria are met
 
 function checkCriteria(){
-  if(needsUppercase && !password.includes(uppercaseString)){
+  if(needsUppercase && (password.indexOf(uppercaseString) === false)){
     clear();
-    findNextCharacter();
+    generatePassword();
  }
-  if(needsLowercase && !password.includes(lowercaseString)){
+  if(needsLowercase && (password.indexOf(lowercaseString) === false)){
     clear();
-    findNextCharacter();
+    findNextCharacter()
  }
-  if(needsSpecial && !password.includes(specialString)){
+  if(needsSpecial && (password.indexOf(specialString) === false)){
     clear();
-    findNextCharacter();
+    findNextCharacter()
  }
-  if(needsNumbers && !password.includes(numberString)){
+  if(needsNumbers && (password.indexOf(numberString) === false)){
     clear();
-    findNextCharacter();
+    findNextCharacter()
+ }
+ else{
+  return;
  }
 }
 
@@ -314,7 +317,6 @@ function clear(){
 }
 
 function generatePassword(){
-  setCriteria();
   getCriteria();
   findNextCharacter();
   checkCriteria()
@@ -324,6 +326,8 @@ function generatePassword(){
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", () => {
- generatePassword(); 
+  setCriteria();
+//  generatePassword(); 
  writePassword();
+ clear();
 });
