@@ -200,6 +200,33 @@ function fourCriteria(){
   }
 }
 
+//checks if all criteria are met
+
+function checkCriteria(){
+  if(needsUppercase && !password.includes(uppercaseString)){
+    clear();
+    findNextCharacter();
+ }
+  if(needsLowercase && !password.includes(lowercaseString)){
+    clear();
+    findNextCharacter();
+ }
+  if(needsSpecial && !password.includes(specialString)){
+    clear();
+    findNextCharacter();
+ }
+  if(needsNumbers && !password.includes(numberString)){
+    clear();
+    findNextCharacter();
+ }
+}
+
+//clears pre-existing string for next use.
+function clear(){
+  password = "";
+}
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", () => {
