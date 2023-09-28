@@ -46,10 +46,7 @@ THEN the password is either displayed in an alert or written to the page
 ```
 
 ### Message from me.
-Don't poke around too much, the application is shy and will probably break.
-If this happens use encouraging words, and reload the program. <br>
-As the criteria is checked after being generated, there is a real possibility that the correct parameters are never reached, and may loop infinitely.
-It is a very small probabiliy, but Murphy's Law and all that.
+This is currently being held together with duct tape and prayers, please be gentle.
 
 ### Under Construction:
 Criteria Checking is currently under construction, please try again later.
