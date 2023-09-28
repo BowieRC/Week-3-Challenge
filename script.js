@@ -9,6 +9,10 @@ var needsNumbers = true;
 
 var requiredLength = 8;
 
+var criteriaNumber = 0;
+var characterString = "";
+
+var nextCharacter;
 
 
 function writePassword() {
