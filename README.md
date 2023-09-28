@@ -1,8 +1,11 @@
 # Week 3 Challenge: Password Generator
 
+### Deployment Link:
+https://bowierc.github.io/Week-3-Challenge/
+
 ## Password Creation.
 With advancing technology, the importance of a strong password is becoming more and more prevelant.
-Who has time to create thousands of unique passwords over and over again, and to make sure that said passwords will match the specified criteria.
+Who has time to create thousands of unique passwords over and over again anymore?
 
 This tool will allow you to hit a button, enter your required criteria, and sit back as a unique password is created for you!
 
@@ -47,3 +50,6 @@ Don't poke around too much, the application is shy and will probably break.
 If this happens use encouraging words, and reload the program. <br>
 As the criteria is checked after being generated, there is a real possibility that the correct parameters are never reached, and may loop infinitely.
 It is a very small probabiliy, but Murphy's Law and all that.
+
+### Under Construction:
+Criteria Checking is currently under construction, please try again later.

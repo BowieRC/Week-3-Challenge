@@ -287,30 +287,6 @@ function setCharacter(){
     password = password.concat(nextCharacter);
   }
 
-//checks if all criteria are met
-
-function checkCriteria(){
-  if(needsUppercase && (password.indexOf(uppercaseString) === false)){
-    clear();
-    generatePassword();
- }
-  if(needsLowercase && (password.indexOf(lowercaseString) === false)){
-    clear();
-    findNextCharacter()
- }
-  if(needsSpecial && (password.indexOf(specialString) === false)){
-    clear();
-    findNextCharacter()
- }
-  if(needsNumbers && (password.indexOf(numberString) === false)){
-    clear();
-    findNextCharacter()
- }
- else{
-  return;
- }
-}
-
 //clears pre-existing string for next use.
 function clear(){
   password = "";
@@ -319,7 +295,6 @@ function clear(){
 function generatePassword(){
   getCriteria();
   findNextCharacter();
-  checkCriteria()
   return password;
   
 }
@@ -327,7 +302,6 @@ function generatePassword(){
 // Add event listener to generate button
 generateBtn.addEventListener("click", () => {
   setCriteria();
-//  generatePassword(); 
  writePassword();
  clear();
 });
