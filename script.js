@@ -2,10 +2,17 @@
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
-var needsUppercase = true;
-var needsLowercase = true;
-var needsSpecial = true;
-var needsNumbers = true;
+var password = "";
+
+const lowercaseString = "abcdefghijklmnopqrstuvwxyz";
+const uppercaseString = lowercaseString.toUpperCase();
+const specialString = "!@#$%^&*,./<>?";
+const numberString = "0123456789";
+
+var needsUppercase = false;
+var needsLowercase = false;
+var needsSpecial = false;
+var needsNumbers = false;
 
 var requiredLength = 8;
 
@@ -21,6 +28,85 @@ function writePassword() {
 
   passwordText.value = password;
 
+}
+
+//get password criteria
+function setCriteria(){
+  setUppercase();
+  setLowercase();
+  setSpecials();
+  setNumbers();
+  setLength();
+  if(!needsLowercase && !needsUppercase && !needsSpecial && !needsNumbers){
+    alert("Must have at least one character type");
+    setCriteria();
+  }
+}
+
+function setUppercase(){
+    selection = prompt("Does your password require uppercase characters? \n 'yes' or 'no'").toLowerCase();
+  if(selection === "yes" || selection === "y"){
+    needsUppercase = true;
+  }
+  else if(selection === 'no' || selection === 'n'){
+    needsUppercase = false;
+
+  } else {
+    alert("Please enter 'yes' or 'no'");
+    setUppercase();
+    }
+}
+
+function setLowercase(){
+  selection = prompt("Does your password require lower characters? \n 'yes' or 'no'").toLowerCase();
+  if(selection === "yes" || selection === "y"){
+    needsLowercase = true;
+  }
+  else if(selection === 'no' || selection === 'n'){
+    needsLowercase = false;
+
+  } else {
+    alert("Please enter 'yes' or 'no'");
+    setLowercase();
+    }
+}
+
+function setSpecials(){
+  selection = prompt("Does your password require special characters? \n 'yes' or 'no'").toLowerCase();
+  if(selection === "yes" || selection === "y"){
+    needsSpecial = true;
+  }
+  else if(selection === 'no' || selection === 'n'){
+    needsSpecial = false;
+
+  } else {
+    alert("Please enter 'yes' or 'no'");
+    setSpecials();
+    }
+}
+
+function setNumbers(){
+  selection = prompt("Does your password require numbers? \n 'yes' or 'no'").toLowerCase();
+  if(selection === "yes" || selection === "y"){
+    needsNumbers = true;
+  }
+  else if(selection === 'no' || selection === 'n'){
+    needsNumbers = false;
+
+  } else {
+    alert("Please enter 'yes' or 'no'");
+    setNumbers();
+    }
+}
+
+function setLength(){
+  selection = prompt("How many characters should your password be? \n Enter number between 8 and 128");
+    if(selection >= 8 && selection <= 1280){
+      requiredLength = selection;
+    } else {
+      alert("Invalid selection \n please enter a number between 8 and 128");
+      setLength();
+    }
 }
 
 //find how many criteria
@@ -63,11 +149,6 @@ function findNextCharacter(){
     }
     
   }
-//     console.log(characterString)
-  
-  
-
-//   console.log(nextCharacter);
   
 }
 
@@ -200,6 +281,12 @@ function fourCriteria(){
   }
 }
 
+//set next charatcer into string
+function setCharacter(){
+  nextCharacter = characterString.charAt(Math.floor(Math.random() * characterString.length));
+    password = password.concat(nextCharacter);
+  }
+
 //checks if all criteria are met
 
 function checkCriteria(){
@@ -226,12 +313,17 @@ function clear(){
   password = "";
 }
 
-
+function generatePassword(){
+  setCriteria();
+  getCriteria();
+  findNextCharacter();
+  checkCriteria()
+  return password;
+  
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", () => {
-  passwordRequirements();
-  getCharacterCount();
-  console.log(characterCount);
-  console.log(passNeeds)
+ generatePassword(); 
+ writePassword();
 });
